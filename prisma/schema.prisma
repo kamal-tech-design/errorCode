@@ -1,0 +1,56 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum ErrorType {
+  code
+  symptom
+  // Add more as needed
+}
+
+model ErrorCode {
+  errorId      Int     @id @default(autoincrement())
+  brandId      Int
+  modalId      Int
+  featureId    Int
+  applianceId  Int
+  erCode       String
+  title        String
+  description  String
+  inverterType String // enum could be better
+  slug         String @unique
+  errorType    ErrorType
+  otherTerm    String
+  errorResolutions ErrorResolution[] // errorCode has many details related resolution
+}
+
+model Brands {
+  id   Int    @id @default(autoincrement())
+  brandName String
+  shortName String
+  country String
+}
+
+model Appliance {
+  id   Int    @id @default(autoincrement())
+  applianceName String
+  shortName String
+  brandName String
+  brandId Int
+}
+
+model ErrorResolution {
+  resolutionid  Int    @id @default(autoincrement())
+  errorId       Int
+  brandId       Int
+  description   String
+  title         String
+  contentOrder  Int
+  other         String
+  errorCode     ErrorCode @relation(fields: [errorId], references: [errorId])
+}
