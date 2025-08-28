@@ -21,25 +21,32 @@ export const metadata = {
   // keywords: "digital store, online shopping, digital products, e-commerce",
 }
 
-export default async function ApplianceDetailPage({ params, searchParams }: { params: { brands: string, appliance: string }, searchParams: any }) { 
-  const paramsObj = await Promise.resolve(params)
-  const queryParam = await Promise.resolve(searchParams)
+interface pageProps {
+  params: {
+    brands: string
+    appliance: string
+  },
+  searchParams: any
+}
 
-  if (!paramsObj.brands || !paramsObj.appliance) {
-    console.error('Invalid route parameters:', { ...paramsObj })
+export default async function ApplianceDetailPage({ params, searchParams }: pageProps ) { 
+  const { brands, appliance } = params
+
+  if (!brands || !appliance) {
+    console.error('Invalid route parameters:', { ...params })
     return <div>Invalid route</div>
   }
 
-  const page = parseInt(queryParam?.page || '1', 10)
+  const page = parseInt(searchParams?.page || '1', 10)
   // const limit = 10
-  const applianceDataList = await loadRelatedApplianceData(paramsObj.brands, paramsObj.appliance, page)
+  const applianceDataList = await loadRelatedApplianceData(brands, appliance, page)
 
   return (
     <div className='p-4'>
       <ErrorListComponent
         applianceRelatedData={ applianceDataList }
-        brand={paramsObj.brands}
-        appliance={paramsObj.appliance}
+        brand={brands}
+        appliance={appliance}
         currentPage={page}
       />
     </div>

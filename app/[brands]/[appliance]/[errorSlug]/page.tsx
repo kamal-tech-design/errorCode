@@ -11,15 +11,23 @@ async function getErrorDetail (brands: string, appliance: string, errorSlug: str
   return res.json()
 }
 
-export default async function ErrorDetailPage({ params }: { params: { brands: string, appliance: string, errorSlug: string } }) {
-  const paramsObj = await Promise.resolve(params)
+interface PageProps {
+  params: {
+    brands: string
+    appliance: string
+    errorSlug: string
+  }
+}
+
+export default async function ErrorDetailPage({ params }: PageProps ) {
+  // const paramsObj = await Promise.resolve(params)
   
-  if (!paramsObj.errorSlug) {
-    console.error('Invalid route parameters:', { ...paramsObj })
+  if (!params?.errorSlug) {
+    console.error('Invalid route parameters:', { ...params })
     return <div>Invalid route</div>
   }
 
-  const errorDetails = await getErrorDetail(paramsObj.brands, paramsObj.appliance, paramsObj.errorSlug)
+  const errorDetails = await getErrorDetail(params.brands, params.appliance, params.errorSlug)
 
   return (
     <div className='p-4 mt-10'>

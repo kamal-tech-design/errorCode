@@ -11,17 +11,25 @@ async function getApplianceByBrand(brand: string) {
   return res.json()
 }
 
-export default async function ApplianceMainPage({ params }: { params: { brands: string } }) {
-  const propObj = await Promise.resolve(params)
-  if (!propObj || !propObj.brands) {  // Handle case where brands parameter is missing
+
+interface pageProps {
+  params: {
+    brands: string
+  }
+}
+
+
+export default async function ApplianceMainPage({ params }: pageProps) {
+  const { brands } = params
+  if (!brands) {  // Handle case where brands parameter is missing
     console.error('Brands parameter is missing in the request')
     return <div>Error: Brands parameter is required.</div>
   }
-  const applianceList = await getApplianceByBrand(propObj.brands)
+  const applianceList = await getApplianceByBrand(brands)
 
   return (
     <div className=''>
-      <AppliancePage appliance={applianceList} brand={propObj.brands} />
+      <AppliancePage appliance={applianceList} brand={brands} />
     </div>
   )
 }
