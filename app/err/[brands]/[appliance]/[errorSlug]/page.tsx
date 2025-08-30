@@ -1,6 +1,7 @@
 import ErrorDetailComponent from './ErrorDetailComponent'
 
 async function getErrorDetail (brand: string, appliance: string, errorSlug: string) {
+  console.log(`${process.env.NEXT_PUBLIC_API_URL || ''}/brands/${brand}/${appliance}/${errorSlug}`, '==url==')
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/brands/${brand}/${appliance}/${errorSlug}`, {
     // cache: 'force-cache', // or 'force-cache' if you want caching
   })

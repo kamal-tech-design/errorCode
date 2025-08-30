@@ -46,14 +46,3 @@ export async function getErrorList(queryValue: string) {
     return NextResponse.json({ message: 'Failed to fetch errors', error }, { status: 500 })
   }
 }
-
-// export async function GET(request: NextRequest) {
-//   const { searchParams } = new URL(request.url)
-//   const id = searchParams.get('id')
-
-//   if (id) {
-//     return getErrorById(Number(id))
-//   }
-  
-//   return getError()
-// }
