@@ -30,16 +30,16 @@ interface pageProps {
 }
 
 export default async function ApplianceDetailPage({ params, searchParams }: pageProps ) { 
-  const { brands, appliance } = params
+  const { brands, appliance } =  await Promise.resolve(params)
+  const { page } =  await Promise.resolve(searchParams)
 
   if (!brands || !appliance) {
     console.error('Invalid route parameters:', { ...params })
     return <div>Invalid route</div>
   }
 
-  const page = parseInt(searchParams?.page || '1', 10)
-  // const limit = 10
-  const applianceDataList = await loadRelatedApplianceData(brands, appliance, page)
+  const pageNo = parseInt(page || '1', 10)
+  const applianceDataList = await loadRelatedApplianceData(brands, appliance, pageNo)
 
   return (
     <div className='p-4'>
@@ -47,7 +47,7 @@ export default async function ApplianceDetailPage({ params, searchParams }: page
         applianceRelatedData={ applianceDataList }
         brand={brands}
         appliance={appliance}
-        currentPage={page}
+        currentPage={pageNo}
       />
     </div>
   )

@@ -3,14 +3,17 @@ import {
   getErrorDetails
 } from '../../../../../controllers/brand.controller'
 
-export async function GET(req: NextRequest, { params }: { params: { errorSlug: string } }) {
-  const apiParam = await Promise.resolve(params)
-  // const url = new URL(req.url)
+interface Parameter {
+  params: {
+    brand: string
+    appliance: string
+    errorSlug: string
+  }
+}
 
-  // const queryValue = req.nextUrl.searchParams.get('page')?.trim() || ''
+export async function GET(req: NextRequest, { params }: Parameter ) {
+  const { brand, appliance, errorSlug } = params // No need for Promise.resolve
   
-  // console.log(queryValue, '===queryValue===')
-  
-  const data = await getErrorDetails(String(apiParam.errorSlug))
-  return (data)
+  const data = await getErrorDetails({ brand, appliance, errorSlug })
+  return data
 }

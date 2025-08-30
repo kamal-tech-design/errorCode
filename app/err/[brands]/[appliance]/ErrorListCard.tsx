@@ -13,7 +13,7 @@ export default function ErrorListCard({ errorRowData,  brand, appliance }: any) 
           key={errorRowData.errorId}
           className="bg-white border border-gray-200 rounded-lg shadow p-3"
         >
-          <Link href={`/${brand}/${appliance}/${errorRowData.slug}`}>
+          <Link href={`/err/${brand}/${appliance}/${errorRowData.slug}`}>
             <h3 className="text-xl font-semibold text-gray-800 mb-3">
               {errorRowData.title} ({errorRowData.erCode}) ({ inverterType(errorRowData.inverterType) })
             </h3>

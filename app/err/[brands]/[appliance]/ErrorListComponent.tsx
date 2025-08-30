@@ -38,7 +38,8 @@ export default function ErrorListComponent({
         <ErrorListCard errorRowData={data} brand={brand} appliance={appliance} />
       )}
 
-      {/* Pagination Controls */}
+      {/* Pagination Controls */
+      totalItems ? (
       <div className="mt-4 px-5 py-2 bg-gray-300 flex flex-wrap items-center justify-between">
         <div className="flex flex-wrap items-center space-x-4">
           <p className="text-sm font-medium">
@@ -67,7 +68,7 @@ export default function ErrorListComponent({
             <label className="font-semibold">Total Items:</label> {totalItems}
           </p>
         </div>
-      </div>
+      </div>) : ('') /* End of Pagination Controls */}
     </div>
   )
 }

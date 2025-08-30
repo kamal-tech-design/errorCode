@@ -47,56 +47,6 @@ export async function getErrorList(queryValue: string) {
   }
 }
 
-// export async function getErrorById(id: number) {
-//   try {
-//     const error = await prisma.errorCode.findUnique({
-//       where: { id },
-//     })
-//     if (!error) {
-//       return NextResponse.json({ message: 'Error not found' }, { status: 404 })
-//     }
-//     return NextResponse.json(error, { status: 200 })
-//   } catch (error) {
-//     return NextResponse.json({ message: 'Failed to fetch error', error }, { status: 500 })
-//   }
-// }
-
-// export async function createError(req: NextRequest) {
-//   try {
-//     const { code, message } = await req.json()
-//     const newError = await prisma.errorCode.create({
-//       data: { code, message },
-//     })
-//     return NextResponse.json(newError, { status: 201 })
-//   } catch (error) {
-//     return NextResponse.json({ message: 'Failed to create error', error }, { status: 500 })
-//   }
-// }
-
-// export async function updateError(req: NextRequest, id: number) {
-//   try {
-//     const { code, message } = await req.json()
-//     const updated = await prisma.errorCode.update({
-//       where: { id },
-//       data: { code, message },
-//     })
-//     return NextResponse.json(updated, { status: 200 })
-//   } catch (error) {
-//     return NextResponse.json({ message: 'Failed to update error', error }, { status: 500 })
-//   }
-// }
-
-// export async function deleteError(id: number) {
-//   try {
-//     await prisma.errorCode.delete({
-//       where: { id },
-//     })
-//     return NextResponse.json({ message: 'Deleted successfully' }, { status: 204 })
-//   } catch (error) {
-//     return NextResponse.json({ message: 'Failed to delete error', error }, { status: 500 })
-//   }
-// }
-
 // export async function GET(request: NextRequest) {
 //   const { searchParams } = new URL(request.url)
 //   const id = searchParams.get('id')

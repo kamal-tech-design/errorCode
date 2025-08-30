@@ -18,7 +18,7 @@ export default async function AppliancePage({ appliance, brand }: any) {
                 className="border p-4 rounded-lg shadow hover:bg-gray-50 transition-colors"
               >
                 <Link
-                  href={`/${brand}/${item.shortName}`}
+                  href={`/err/${brand}/${item.shortName}`}
                   className="text-lg font-semibold text-blue-500 hover:underline"
                 >
                   { item.applianceName }

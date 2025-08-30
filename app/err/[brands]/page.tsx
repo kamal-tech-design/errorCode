@@ -1,4 +1,4 @@
-import AppliancePage from '../../components/AppliancePage'
+import AppliancePage from '../../../components/AppliancePage'
 
 async function getApplianceByBrand(brand: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/brands/${brand}`, {
@@ -11,21 +11,25 @@ async function getApplianceByBrand(brand: string) {
   return res.json()
 }
 
-
 interface pageProps {
   params: {
     brands: string
   }
 }
 
-
 export default async function ApplianceMainPage({ params }: pageProps) {
-  const { brands } = params
+const { brands } = await Promise.resolve(params)
   if (!brands) {  // Handle case where brands parameter is missing
     console.error('Brands parameter is missing in the request')
-    return <div>Error: Brands parameter is required.</div>
+    return null
   }
-  const applianceList = await getApplianceByBrand(brands)
+
+  let applianceList: any = []
+  try {
+    applianceList = await getApplianceByBrand(brands)
+  } catch (error) {
+    console.log('Something went wrong while trying to fetch appliance list:', error)
+  }
 
   return (
     <div className=''>

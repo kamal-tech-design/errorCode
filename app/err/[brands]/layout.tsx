@@ -1,5 +1,5 @@
 'use client'
-import "../globalStyles/globals.css"  // Import global styles if needed
+import "../../globalStyles/globals.css"  // Import global styles if needed
 
 interface ErrorCodeLayoutProps {
   children: React.ReactNode

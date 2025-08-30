@@ -9,7 +9,7 @@ interface FilterDataListProps {
 }
 
 const FilterDataList = ({ searchResults, isLoading, isError, isDisplay, handleClose }: FilterDataListProps) => {
-  console.log(isDisplay, 'isDisplay prop in FilterDataList')
+
   if (!isDisplay) {
     return null
   }
@@ -32,7 +32,7 @@ const FilterDataList = ({ searchResults, isLoading, isError, isDisplay, handleCl
       searchResults.map((item: any, index: number) => (
         <Link
           onClick={handleClose}
-          href={`/${item.shortName.toLowerCase()}/${item.appliance.toLowerCase()}/${item.slug}`}
+          href={`wrr/${item.shortName.toLowerCase()}/${item.appliance.toLowerCase()}/${item.slug}`}
           key={item.errorId}
           className="block hover:bg-gray-50 transition px-4 py-3 border-b border-gray-100"
         >
@@ -62,7 +62,6 @@ const FilterDataList = ({ searchResults, isLoading, isError, isDisplay, handleCl
     )}
   </div>
 </div>
-
   )
 }
 

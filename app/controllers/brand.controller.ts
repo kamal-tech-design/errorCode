@@ -115,7 +115,7 @@ export async function getApplianceRelatedData(brand: string, appliance: string, 
  * @param errorSlug - The unique slug identifier of the error code.
  * @returns JSON response with error details and any associated resolutions.
  */
-export async function getErrorDetails(errorSlug: string) {
+export async function getErrorDetails({ brand, appliance, errorSlug }: { errorSlug: string, brand:string, appliance: string }) {
   try {
     const errorDetailsObj = await prisma.errorCode.findMany({
       include: {
