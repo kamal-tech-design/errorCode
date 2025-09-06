@@ -54,3 +54,12 @@ model ErrorResolution {
   other         String
   errorCode     ErrorCode @relation(fields: [errorId], references: [errorId])
 }
+
+model QueryForm {
+  id            Int      @id @default(autoincrement())
+  name          String
+  email         String
+  queryText     String
+  contactNumber String
+  createdAt     DateTime @default(now())
+}

@@ -1,39 +1,31 @@
 {
-  "name": "palhola",
+  "name": "errorsupport",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "next build --turbopack",
     "start": "next start",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix"
+    "lint": "eslint",
+    "lint:fix": "eslint --ext .ts,.tsx --fix"
   },
   "dependencies": {
     "@prisma/client": "^6.15.0",
-    "@tailwindcss/postcss": "^4.1.7",
-    "@tanstack/react-query": "^5.84.1",
-    "emoji-picker-react": "^4.12.2",
-    "js-yaml": "^4.1.0",
-    "lodash": "^4.17.21",
-    "mysql": "^2.18.1",
-    "next": "^15.3.2",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-router": "^7.6.0",
-    "socket.io-client": "^4.8.1"
+    "@tanstack/react-query": "^5.85.6",
+    "next": "15.5.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
   },
   "devDependencies": {
-    "@types/js-yaml": "^4.0.9",
-    "@types/lodash": "^4.17.20",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "autoprefixer": "^10.4.21",
-    "eslint-config-next": "15.4.5",
-    "postcss": "^8.5.3",
+    "eslint": "^9.34.0",
+    "eslint-config-next": "15.5.2",
     "prisma": "^6.15.0",
-    "tailwindcss": "^4.1.7",
+    "tailwindcss": "^4",
     "typescript": "^5"
   }
 }
