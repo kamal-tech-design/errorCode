@@ -18,6 +18,7 @@ export default async function ErrorDetailPage({
   }
   // 👇 getErrorDetails should return data directly, not a Response
   const errorDetails = await getErrorDetails({ errorSlug })
+  console.log('Fetched error details:', errorDetails)
 
   return (
     <div className="p-4 mt-5">

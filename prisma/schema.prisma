@@ -55,6 +55,15 @@ model ErrorResolution {
   errorCode     ErrorCode @relation(fields: [errorId], references: [errorId])
 }
 
+enum Section {
+  seo_title
+  what_does
+  causes
+  fix
+  helpful_tip
+  faq
+}
+
 model QueryForm {
   id            Int      @id @default(autoincrement())
   name          String
@@ -62,4 +71,5 @@ model QueryForm {
   queryText     String
   contactNumber String
   createdAt     DateTime @default(now())
+  section       Section
 }
