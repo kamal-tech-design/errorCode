@@ -1,7 +1,6 @@
 'use client'
 import Link from 'next/link'
 import {  useState } from 'react'
-// import { useRouter } from 'next/router'
 
 function Header() {
   // const router = useRouter()
@@ -20,23 +19,29 @@ function Header() {
   }
 
   return (
-    <header className="bg-gray-900 text-white px-6 py-4 shadow-md">
+    <header className="bg-gray-900 text-white px-6 py-1 shadow-md">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         
         {/* Brand + Refined Slogan */}
         <div className="mb-2 sm:mb-0">
           <h1 className="text-2xl font-bold tracking-tight">
-            <Link href="/">ErrorSupport</Link> 
+            <Link href="/">
+              <img
+                style={{ width: '155px' }}
+                src="/images/appliance_fix_error_logo.png"
+                alt="Not Found"
+                className="max-w-md mt-2 mx-auto"
+              />
+            </Link> 
           </h1>
-          <p className="text-sm text-gray-300 italic">
+          <p className="text-sm text-gray-300 italic text-center sm:text-left">
             Your multilingual tech support gateway
           </p>
         </div>
 
         {/* Navigation + Language Selector */}
-        <nav className="mb-2 sm:mb-0">
+        <nav className="mb-2 sm:mb-0 flex justify-center">
           <ul className="flex space-x-6 text-sm font-medium items-center">
-            
             {/* Language Dropdown */}
             <li>
               <select
@@ -55,7 +60,7 @@ function Header() {
             {/* Other Links */}
             
             <li>
-              <Link href="/queryForm" className="hover:underline">Query</Link>
+              <Link href="/query-form" className="hover:underline">Put Your Query</Link>
             </li>
           </ul>
         </nav>

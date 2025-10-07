@@ -1,75 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
+model appliance {
+  id            Int    @id @default(autoincrement())
+  brandId       Int
+  brandName     String @db.VarChar(50)
+  applianceName String @db.VarChar(250)
+  shortName     String @db.VarChar(50)
 }
 
-enum ErrorType {
-  code
-  symptom
-  // Add more as needed
+model brands {
+  id          Int      @id @default(autoincrement())
+  brandName   String   @db.VarChar(100)
+  shortName   String   @db.VarChar(30)
+  country     String   @db.VarChar(30)
+  isActive    Boolean? @default(false)
+  orderNumber Int?     @db.SmallInt
 }
 
-model ErrorCode {
-  errorId      Int     @id @default(autoincrement())
+model errorcode {
+  errorId      Int                 @id @default(autoincrement())
   brandId      Int
+  applianceId  Int
   modalId      Int
   featureId    Int
-  applianceId  Int
-  erCode       String
-  title        String
-  description  String
-  inverterType String // enum could be better
-  slug         String @unique
-  errorType    ErrorType
-  otherTerm    String
-  errorResolutions ErrorResolution[] // errorCode has many details related resolution
+  erCode       String              @unique(map: "unique_erCode") @db.VarChar(50)
+  title        String              @db.VarChar(200)
+  description  String              @db.Text
+  inverterType String              @db.VarChar(20)
+  slug         String              @unique(map: "unique_slug") @db.VarChar(100)
+  errorType    errorcode_errorType @default(code)
+  otherTerm    String              @db.Text
+  errorResolutions errorresolution[] // errorCode has many details related resolution
+  @@fulltext([erCode, title, description, inverterType], map: "erCode")
 }
 
-model Brands {
-  id   Int    @id @default(autoincrement())
-  brandName String
-  shortName String
-  country String
+model errormodalmap {
+  id          Int @id @default(autoincrement())
+  errorcodeId Int
+  modalId     Int
 }
 
-model Appliance {
-  id   Int    @id @default(autoincrement())
-  applianceName String
-  shortName String
-  brandName String
-  brandId Int
+model errorresolution {
+  resolutionId Int                      @id @default(autoincrement())
+  errorId      Int
+  brandId      Int
+  description  String                   @db.Text
+  title        String                   @db.Text
+  contentOrder Int                      @default(1) @db.TinyInt
+  other        String                   @db.Text
+  section      errorresolution_section? @default(seo_title)
+  errorCode     errorcode @relation(fields: [errorId], references: [errorId])
 }
 
-model ErrorResolution {
-  resolutionid  Int    @id @default(autoincrement())
-  errorId       Int
-  brandId       Int
-  description   String
-  title         String
-  contentOrder  Int
-  other         String
-  errorCode     ErrorCode @relation(fields: [errorId], references: [errorId])
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model modals {
+  modalId    Int    @id @default(autoincrement())
+  brandId    Int
+  modalName  String @db.VarChar(100)
+  type       String @db.VarChar(6)
+  years      String @db.VarChar(30)
+  capacity   Float  @db.Float
+  star       Int    @db.TinyInt
+  keyFeature String @db.Text
+
+  @@fulltext([modalName, type, keyFeature, years], map: "modalName")
 }
 
-enum Section {
-  seo_title
-  what_does
-  causes
-  fix
-  helpful_tip
-  faq
-}
-
-model QueryForm {
+model queryform {
   id            Int      @id @default(autoincrement())
-  name          String
-  email         String
-  queryText     String
-  contactNumber String
-  createdAt     DateTime @default(now())
-  section       Section
+  name          String   @db.VarChar(100)
+  email         String   @db.VarChar(100)
+  queryText     String   @db.Text
+  contactNumber String   @db.VarChar(15)
+  createdAt     DateTime @default(now()) @db.DateTime(0)
+  errorId       Int
+}
+
+enum errorresolution_section {
+  seo_title
+  faq
+  helpful_tip
+  fix
+  causes
+  what_does
+}
+
+enum errorcode_errorType {
+  code
+  symptom
 }

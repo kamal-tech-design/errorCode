@@ -5,7 +5,7 @@ export default function NotFoundPage() {
   return (
     <div className="text-center mt-12 bg-white">
       <img
-        src="/images/404-not.jpeg"
+        src="/images/appliance_fix_error_page-not-found.png"
         alt="Not Found"
         className="max-w-md mt-5 mx-auto"
       />

@@ -2,7 +2,6 @@ import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-
   // Public Runtime Configuration
   publicRuntimeConfig: {
     api: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api', // Use environment variable if available

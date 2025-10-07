@@ -6,10 +6,12 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
+    "export": "next export",
     "lint": "eslint",
     "lint:fix": "eslint --ext .ts,.tsx --fix"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@prisma/client": "^6.15.0",
     "@tanstack/react-query": "^5.85.6",
     "next": "15.5.2",

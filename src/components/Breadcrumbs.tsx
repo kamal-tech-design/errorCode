@@ -11,7 +11,7 @@ export default function Breadcrumbs() {
     <nav className="text-sm text-gray-600 text-xl">
       { pathParts.length ? (
         <span>
-          <Link href="/" className="text-blue-500 hover:underline"> Home </Link>
+          <Link href="/" className="text-black-300 hover:underline"> Home </Link>
         </span>)
        : null }
       { pathParts.map((part, index) => {
@@ -20,7 +20,7 @@ export default function Breadcrumbs() {
         return (
           <span key={index}>
             <span className="mx-1">/</span>
-            <Link href={href} className="text-blue-500 hover:underline capitalize">
+            <Link href={href} className="text-black-300 hover:underline capitalize">
               { part  /* Decoding URL parts and replacing hyphens with spaces */ }
             </Link>
           </span>

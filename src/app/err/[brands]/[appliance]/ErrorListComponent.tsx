@@ -40,7 +40,7 @@ export default function ErrorListComponent({
 
       {/* Pagination Controls */
       totalItems ? (
-      <div className="mt-4 px-5 py-2 bg-gray-300 flex flex-wrap items-center justify-between">
+      <div className="bg-yellow-50 mt-4 px-5 py-2 bg-gray-300 flex flex-wrap items-center justify-between">
         <div className="flex flex-wrap items-center space-x-4">
           <p className="text-sm font-medium">
             <label className="font-semibold">Per Page:</label> {limitItems}

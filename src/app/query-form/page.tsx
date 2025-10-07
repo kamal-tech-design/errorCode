@@ -6,14 +6,14 @@ export const metadata = {
   keywords: ['contact', 'support', 'query form', 'help', 'customer service'],
 }
 
-export default function QueryPage() {
+export default function QueryPage({ errorId }: { errorId?: string }) {
   return (
     <main className="max-w-2xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold text-gray-800 mb-4 text-center">Query Page</h1>
-      <p className="text-gray-600 text-center mb-6">
+      <h1 className="text-3xl font-bold mb-4 text-center" id="query-form">Query Form</h1>
+      <p className="text-center mb-6">
         Have a question or concern? Submit your query and we`ll get back to you!
       </p>
-      <QueryForm />
+      <QueryForm errorId={errorId} />
     </main>
   )
 }

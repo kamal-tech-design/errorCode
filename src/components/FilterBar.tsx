@@ -51,7 +51,6 @@ const FilterBar: React.FC = () => {
       setSearchResults([])
       setIsError(true)
     }
-
     setIsLoading(false)
   }
 
@@ -76,11 +75,11 @@ const FilterBar: React.FC = () => {
   }
 
   return (
-    <div className="search-container w-full max-w-4xl p-4 bg-white rounded-lg shadow-md">
+    <div className="search-container w-full max-w-4xl p-4 bg-[#4e4e47] rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-4">
         {/* Error Codes */}
-        <p className="text-gray-600 mb-4 text-sm">
-          You can search by error code, description or inverter type.
+        <p className="text-white mb-4 text-sm">
+          You can search by error code or description.
         </p>
       </h2>
       <div className="relative mb-4">
@@ -90,7 +89,7 @@ const FilterBar: React.FC = () => {
             value={searchText}
             onChange={handleSearchInput}
             placeholder="Search error codes..."
-            className="w-full p-2 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 pr-12 border text-white border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <button
             type="submit"

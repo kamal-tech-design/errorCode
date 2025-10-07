@@ -1,10 +1,27 @@
+import { Metadata } from 'next'
 import { getApplianceRelatedData } from '@/app/controllers/brand.controller'
 import ErrorListComponent from './ErrorListComponent'
 
-export const metadata = {
-  title: "PalHola - Talk to strangers",
-  description: "Welcome to the Digital Store, your one-stop shop for all things digital.",
-  // keywords: "digital store, online shopping, digital products, e-commerce",
+export const generateMetadata = async ({ params }: { params: {
+    brands: string
+    appliance: string
+  } }): Promise<Metadata> => {
+  const { brands, appliance } = await Promise.resolve(params)
+
+  return {
+    title: `${brands} | ${appliance} Error Code | Appliance Error Fix`,
+    description: `Troubleshoot ${brands} | ${appliance} issues like. Get solutions, fixes, and error code explanations.`,
+    keywords: [
+      `${brands} | ${appliance} appliance error codes`,
+      `${brands} | ${appliance} error code troubleshooting`,
+      `${brands} | ${appliance} appliance repair tips`,
+      brands,
+      appliance
+    ].join(", "),
+    alternates: {
+      canonical: `https://applianceerrorfix.com/err/${brands}/${appliance}`,
+    }
+  }
 }
 
 export default async function ApplianceDetailPage({ params, searchParams }: {

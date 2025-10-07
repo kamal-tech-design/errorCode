@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 
-const QueryForm = () => {
+const ContactForm = ({ errorId }: { errorId?: string}) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [contactNumber, setContactNumber] = useState('')
@@ -24,7 +24,7 @@ const QueryForm = () => {
       const response = await fetch('/api/queryForm', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, contactNumber, queryText })
+        body: JSON.stringify({ name, email, contactNumber, queryText, errorId })
       })
 
       if (response.ok) {
@@ -36,7 +36,7 @@ const QueryForm = () => {
       } else {
         setMessage('❌ Something went wrong. Please try again.')
       }
-    } catch (error) {
+    } catch (error: any) {
       setMessage('❌ Submission failed. Please check your internet connection.')
     } finally {
       setLoading(false)
@@ -55,7 +55,7 @@ const QueryForm = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           disabled={loading}
-          className="w-full border border-gray-300 rounded-md p-4 disabled:opacity-50"
+          className="w-full text-gray-700 border border-gray-300 rounded-md p-4 disabled:opacity-50"
         />
       </div>
       <div>
@@ -66,7 +66,7 @@ const QueryForm = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           disabled={loading}
-          className="w-full border border-gray-300 rounded-md p-4 disabled:opacity-50"
+          className="w-full text-gray-700 border border-gray-300 rounded-md p-4 disabled:opacity-50"
         />
       </div>
 
@@ -77,7 +77,7 @@ const QueryForm = () => {
           value={contactNumber}
           onChange={(e) => setContactNumber(e.target.value)}
           disabled={loading}
-          className="w-full border border-gray-300 rounded-md p-4 disabled:opacity-50"
+          className="w-full border text-gray-700 border-gray-300 rounded-md p-4 disabled:opacity-50"
         />
       </div>
 
@@ -89,7 +89,7 @@ const QueryForm = () => {
           value={queryText}
           onChange={(e) => setQueryText(e.target.value)}
           disabled={loading}
-          className="w-full border border-gray-300 rounded-md p-4 resize-none disabled:opacity-50"
+          className="w-full text-gray-700 border border-gray-300 rounded-md p-4 resize-none disabled:opacity-50"
         />
       </div>
 
@@ -98,7 +98,7 @@ const QueryForm = () => {
           type="submit"
           disabled={loading}
           className={`${
-            loading ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 cursor-pointer'
+            loading ? 'bg-gray-800 cursor-not-allowed' : 'bg-gray-800 hover:bg-gray-800 cursor-pointer'
           } text-white font-semibold py-2 px-6 rounded-md transition duration-300`}
         >
           {loading ? 'Submitting...' : 'Submit Query'}
@@ -108,4 +108,4 @@ const QueryForm = () => {
   )
 }
 
-export default QueryForm
+export default ContactForm
