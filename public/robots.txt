@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://applianceerrorfix.com/sitemap.xml

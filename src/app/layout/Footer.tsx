@@ -2,7 +2,7 @@ import Link from "next/link"
 
 function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-4 mt-8 flex flex-col items-center gap-2">
+    <footer className="bg-gray-900 text-white py-4 mt-8 flex flex-col items-center gap-2">
       <div className="flex gap-6">
         <Link href="/privacy-policy" className="hover:underline">
           Privacy Policy

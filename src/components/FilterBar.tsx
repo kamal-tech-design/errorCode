@@ -75,10 +75,10 @@ const FilterBar: React.FC = () => {
   }
 
   return (
-    <div className="search-container w-full max-w-4xl p-4 bg-[#4e4e47] rounded-lg shadow-md">
+    <div className="search-container w-full max-w-4xl p-4 bg-gradient-to-b from-[#EAF8FB] rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-4">
         {/* Error Codes */}
-        <p className="text-white mb-4 text-sm">
+        <p className="mb-4 text-sm">
           You can search by error code or description.
         </p>
       </h2>
@@ -88,12 +88,17 @@ const FilterBar: React.FC = () => {
             type="text"
             value={searchText}
             onChange={handleSearchInput}
-            placeholder="Search error codes..."
-            className="w-full p-2 pr-12 border text-white border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Enter error code or description..."
+            className="w-full p-2 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
+          <p className='text-sm mt-1' style={{ 'fontSize' : '10px'}}>
+            <b> &nbsp;Ex:</b><br />
+              &nbsp; &nbsp; 1. error code EID / F1 <br />
+              &nbsp; &nbsp; 2. fix room temperature not cooling / washer not draining
+          </p>
           <button
             type="submit"
-            className="absolute right-4 px-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-blue-600 cursor-pointer transition-colors"
+            className="absolute right-4 px-2 top-1/4 transform -translate-y-1/2 text-gray-500 hover:text-blue-600 cursor-pointer transition-colors"
           >
             <svg
               className="w-6 h-6"

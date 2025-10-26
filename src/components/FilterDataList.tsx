@@ -43,7 +43,7 @@ const FilterDataList = ({ searchResults, isLoading, isError, isDisplay, handleCl
   const returnedSearchResults = () => {
     return filterResult.map((item: any, index: number) => (<Link
       onClick={handleClose}
-      href={`/err/${item.shortName.toLowerCase()}/${item.applianceSlug.toLowerCase()}/${item.slug}`}
+      href={`/fix/${item.shortName.toLowerCase()}/${item.applianceSlug.toLowerCase()}/${item.slug}`}
       key={item.errorId}
       className="block hover:bg-gray-50 transition px-4 py-3 border-b border-gray-100"
     >

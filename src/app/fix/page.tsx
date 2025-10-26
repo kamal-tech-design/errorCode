@@ -9,7 +9,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     description: "Explore a complete list of major appliance and electronics brands with troubleshooting guides, error codes, repair tips, and maintenance advice.",
     keywords: "appliance brands, electronics brands, appliance error codes, appliance troubleshooting, appliance repair tips, home appliance brands, kitchen appliance brands, laundry appliance support, electronic device brands, appliance diagnostics",
     alternates: {
-      canonical: `https://applianceerrorfix.com/err`,
+      canonical: `https://applianceerrorfix.com/fix`,
     }
   }
 }

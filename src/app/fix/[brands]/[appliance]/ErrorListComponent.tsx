@@ -33,7 +33,7 @@ export default function ErrorListComponent({
   return (
     <div className="justify-center items-center">
       {!hasData ? (
-        <p className="text-gray-500 text-center py-4">No error codes found for this appliance.</p>
+        <p className="text-gray-500 text-center py-4">No error codes found for this `{ appliance }` appliance.</p>
       ) : (
         <ErrorListCard errorRowData={data} brand={brand} appliance={appliance} />
       )}

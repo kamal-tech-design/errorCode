@@ -53,7 +53,7 @@ export async function getErrorList(queryValue: string) {
       FROM errorcode ec
       LEFT JOIN brands bd ON ec.brandId = bd.id
       LEFT JOIN appliance ap ON ec.applianceId = ap.id
-      WHERE MATCH(ec.title, ec.description, ec.erCode, ec.inverterType)
+      WHERE MATCH(ec.title, ec.description, ec.erCode, ec.otherTerm)
         AGAINST (? IN NATURAL LANGUAGE MODE)
       LIMIT 50
     `, queryWords)

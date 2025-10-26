@@ -83,7 +83,7 @@ const QueryForm = ({ errorId }: { errorId?: string}) => {
 
       <div>
         <textarea
-          placeholder="Enter your query here...  *"
+          placeholder="Enter your query/feedback here...  *"
           rows={5}
           required
           value={queryText}

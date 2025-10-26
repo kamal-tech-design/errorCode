@@ -14,7 +14,10 @@ export const metadata = {
     'information security',
     'GDPR compliance',
     'app privacy'
-  ]
+  ],
+  alternates: {
+    canonical: `https://applianceerrorfix.com/privacy-policy`,
+  }
 }
 
 export default function PrivacyPolicyPage() {

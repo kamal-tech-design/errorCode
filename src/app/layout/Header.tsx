@@ -1,22 +1,20 @@
 'use client'
 import Link from 'next/link'
-import {  useState } from 'react'
+import { useState } from 'react'
+import { usePathname } from 'next/navigation'
+import useSaveVisitorInfo from '../hooks'
 
 function Header() {
-  // const router = useRouter()
+  const pathname = usePathname()  // e.g. "/products"
   const [language, setLanguage] = useState('en')
-
+  useSaveVisitorInfo({ pathname, setLanguage })
+  // ...existing code...
   const handleLanguageChange = (e: any) => {
     const selectedLang = e.target.value
     setLanguage(selectedLang)
-
-    // Logic to redirect or set language (update as per your i18n setup)
-    // Example: redirect to /hi, /ta, etc.
-    // router.push(`/${selectedLang}`)
-    if (typeof window !== 'undefined') {
-      // router.push(`/${selectedLang}`)
-    }
+    localStorage.setItem('aef_preferredLanguage', selectedLang)
   }
+  // ...existing code...
 
   return (
     <header className="bg-gray-900 text-white px-6 py-1 shadow-md">
@@ -42,6 +40,13 @@ function Header() {
         {/* Navigation + Language Selector */}
         <nav className="mb-2 sm:mb-0 flex justify-center">
           <ul className="flex space-x-6 text-sm font-medium items-center">
+            {/* Other Links */}
+            <li>
+              <Link href="/fix" className="hover:underline">Brands</Link>
+            </li>
+            <li>
+              <Link href="/query-form" className="hover:underline">Put Your Query</Link>
+            </li>
             {/* Language Dropdown */}
             <li>
               <select
@@ -55,12 +60,6 @@ function Header() {
                 <option value="kn">Kannada</option>
                 <option value="te">Telugu</option>
               </select>
-            </li>
-
-            {/* Other Links */}
-            
-            <li>
-              <Link href="/query-form" className="hover:underline">Put Your Query</Link>
             </li>
           </ul>
         </nav>

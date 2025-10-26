@@ -10,7 +10,7 @@ export const generateMetadata = async ({ params }: { params: { brands: string } 
     description: `Explore ${brands} appliances including Refrigerator, Air Conditioners, Washing Machine, Dishwasher, TV & Smart Appliance, Ovens & Microwaves with troubleshooting guides and repair tips.`,
     keywords: `${brands} appliance brands, electronics brands, appliance error codes, appliance troubleshooting, appliance repair tips, home appliance brands, kitchen appliance brands, laundry appliance support, electronic device brands, appliance diagnostics`,
     alternates: {
-      canonical: `https://applianceerrorfix.com/err/${brands}`
+      canonical: `https://applianceerrorfix.com/fix/${brands}`
     }
   }
 }
@@ -19,7 +19,7 @@ export default async function ApplianceMainPage({ params }: {
   params: {
     brands: string
   }
-} ) {
+}) {
   const { brands } = await Promise.resolve(params)
   if (!brands) {  // Handle case where brands parameter is missing
     console.error('Brands parameter is missing in the request')

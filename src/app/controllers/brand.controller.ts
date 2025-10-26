@@ -95,7 +95,8 @@ export async function getApplianceRelatedData(brand: string, appliance: string, 
     const applianceId = applianceInfo?.id
     const getBrandsFromErrorCode = await prisma.errorcode.findFirst({
       where:{
-        brandId: brandInfo?.id
+        brandId: brandInfo?.id,
+        applianceId: applianceId
       }
     })
     const brandCnd = getBrandsFromErrorCode?.brandId ? { brandId: brandInfo?.id } : {}
@@ -112,7 +113,6 @@ export async function getApplianceRelatedData(brand: string, appliance: string, 
         ...brandCnd
       }
     } : {}
-    console.log('Where condition:', whereCondition)
 
     const totalCount: any = await prisma.errorcode.count({
       ...whereCondition

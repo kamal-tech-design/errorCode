@@ -32,6 +32,8 @@ interface Props {
   errorDetails: ErrorDetail[] | any
   errorResolutions: ErrorResolution[] | any
   details: any
+  brands: string,
+  appliance: string
 }
 
 const iconMap: Record<string, any> = {
@@ -45,7 +47,9 @@ const iconMap: Record<string, any> = {
 export default function ErrorDetailComponent({
   errorDetails,
   errorResolutions,
-  details
+  details,
+  brands,
+  appliance
 }: Props) {
 
   if (!errorDetails || errorDetails.length === 0) {
@@ -68,33 +72,44 @@ export default function ErrorDetailComponent({
 
   // Custom list item style without default bullet, using colored dots or checkmarks
   const CustomListItem = ({ children }: { children: React.ReactNode }) => (
-    <li className="relative pl-6 mb-2 text-white text-xl before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:h-3 before:w-3 before:rounded-full before:bg-blue-500">
+    <li className="relative pl-6 mb-2 text-1xl before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:h-3 before:w-3 before:rounded-full before:bg-blue-500">
       {children}
     </li>
   )
+  const errorCd = details && details?.erCode ? 
+    (details.erCode?.split('-') ? details.erCode?.split('-')[1]: details.erCode) : 'N/A'
+  console.log(details, '===details')
+  const title = details?.title || ''
 
   return (
-    <article className="w-full max-w-4xl mx-auto bg-[#4e4e47] rounded-lg shadow-md overflow-x-auto">
-      
+    <article className="bg-gradient-to-b from-[#EAF8FB] text-gray-700 w-full max-w-4xl mx-auto  rounded-lg shadow-md overflow-x-auto">
+      <h1 className='px-4 mt-5 items-center text-2xl font-semibold  mb-3'>
+        <span className='capitalize'>{ `${brands} | ${appliance}` }</span>
+          &nbsp;<span className='capitalize'>{ (title ? `– ${title}`: '') }</span>
+        <br />
+        { `Error Codes (${errorCd}): Troubleshooting, Fixes & Prevention Tips explained below.` }
+      </h1>
       {/* What Does Section */}
-      {whatDoes?.title && (
-        <section className="p-6 border-b border-gray-800">
-          <h2 className="flex items-center text-3xl font-semibold text-white mb-3">
-            {iconMap['what_does']}
-            {whatDoes.title}❓
+      { whatDoes?.title && (
+        <section className="p-4 mt-2 border-b border-white">
+          <h2 className="flex items-center text-xl font-semibold mb-3">
+            { iconMap['what_does'] }
+            { whatDoes.title }❓
           </h2>
-          <p className="text-base leading-relaxed text-xl text-white">{whatDoes.description}</p>
+          <p className="px-5 text-base leading-relaxed text-1xl">{whatDoes.description}</p>
         </section>
       )}
 
       {/* What Causes Section */}
-      {whatCauses?.title && (
-        <section className="p-6 border-b border-gray-800 mt-2">
-          <h2 className="flex items-center text-3xl font-semibold text-white mb-3">
-            {iconMap['causes']}
-            {whatCauses.title}
+      { whatCauses?.title && (
+        <section className="p-4 border-b border-white mt-2" id="whatcauses-tip-section-appliance-error-fix">
+          <h2 className="flex items-center text-xl font-semibold mb-3">
+            { iconMap['causes'] }
+            { fix.title?.toLowerCase().includes(appliance?.toLowerCase()) ? '' : (
+              <span className='capitalize'>{`${appliance}`}&nbsp;-&nbsp;</span>)}
+            { whatCauses.title }
           </h2>
-          <ul className="list-none pl-0">
+          <ul className="px-5 list-none">
             {safeParseJSON(whatCauses.description).map((item: string, idx: number) => (
               <CustomListItem key={idx}>{item}</CustomListItem>
             ))}
@@ -104,16 +119,19 @@ export default function ErrorDetailComponent({
 
       {/* Fix Section */}
       {fix?.title && (
-        <section className="p-6 border-b border-gray-800">
-          <h2 className="flex items-center text-3xl font-semibold text-white mb-3">
-            { iconMap['fix'] } { fix.title }❓
+        <section className="p-4 border-b border-white" id="fixes-tip-section-appliance-error-fix">
+          <h2 className="flex items-center text-xl font-semibold mb-3">
+            { iconMap['fix'] }
+            { fix.title?.toLowerCase().includes(appliance?.toLowerCase()) ? '' : (
+              <span className='capitalize'>{`${appliance}`}&nbsp;-&nbsp;</span>)}
+             { fix.title }❓
           </h2>
-          <ul className="list-none pl-0 space-y-6">
-            {safeParseJSON(fix.description).map(
+          <ul className="list-none px-5 space-y-6">
+            { safeParseJSON(fix.description).map(
               (item: { title: string, steps: string[] }, idx: number) => (
-                <li key={idx} className="text-white">
-                  <h3 className="text-xl font-semibold mb-1">{item.title}</h3>
-                  <ol className="list-decimal text-xl list-inside ml-6 space-y-1">
+                <li key={idx} className="">
+                  <h3 className="text-1xl font-semibold mb-1">{item.title}</h3>
+                  <ol className="list-decimal text-1xl list-inside ml-6 space-y-1">
                     {item.steps.map((step, stepIdx) => (
                       <li key={stepIdx}>{step}</li>
                     ))}
@@ -127,38 +145,40 @@ export default function ErrorDetailComponent({
 
       {/* Helpful Tip Section */}
       {helpfulTip?.title && (
-        <section className="p-6 border-b border-gray-800">
-          <h2 className="flex items-center text-3xl font-semibold text-white mb-3">
+        <section className="p-4 border-b border-white" id="helpful-tip-section-appliance-error-fix">
+          <h2 className="flex items-center text-xl font-semibold mb-3">
             {iconMap['helpful_tip']}
+            { fix.title?.toLowerCase().includes(appliance?.toLowerCase()) ? '' : (
+              <span className='capitalize'>{`${appliance}`}&nbsp;-&nbsp;</span>)}
             {helpfulTip.title}
           </h2>
-          <div className="text-white text-xl space-y-3">
+          <ul className="px-5 text-1xl space-y-3">
             {safeParseJSON(helpfulTip.description).map((tip: string, idx: number) => (
-              <p key={idx}>{tip}</p>
+              <CustomListItem key={idx}>{tip}</CustomListItem>
             ))}
-          </div>
+          </ul>
         </section>
       )}
 
       {/* FAQ Section */}
       {faq?.title && (
-        <section className="p-6">
-          <h2 className="flex items-center text-3xl font-semibold text-white mb-3">
+        <section className="p-4">
+          <h2 className="flex items-center text-xl font-semibold mb-3">
             {iconMap['faq']}
-            { faq.title }❓
+            {faq.title}❓
           </h2>
-          <dl className="space-y-6 text-white">
+          <dl className="px-5 space-y-6">
             {safeParseJSON(faq.description).map(
               (item: { question: string, answer: string }, idx: number) => (
                 <div key={idx}>
-                  <dt className="font-semibold text-xl mb-1">Question: {item.question}</dt>
-                  <dd className="ml-4 text-xl leading-relaxed"><b>Answer:</b> {item.answer}</dd>
+                  <dt className="font-semibold text-1xl mb-1">Question: {item.question}</dt>
+                  <dd className="ml-4 text-1xl leading-relaxed"><b>Answer:</b> {item.answer}</dd>
                 </div>
               )
             )}
           </dl>
 
-          <div className="group text-white mt-4">
+          <div className="group mt-4">
             <QueryPage errorId={details?.errorId} />
           </div>
         </section>

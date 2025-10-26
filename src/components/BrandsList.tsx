@@ -8,11 +8,12 @@ export default function HomePage({ brands }: any) {
       {
         brands && brands.length > 0 ? (
           <div className="w-full max-w-2xl">
-            <h2 className="text-2xl font-bold text-gray-700 mb-4">Select Brands</h2>
+            <h1 className="text-3xl font-bold"> Top Appliance Brands </h1>
+            <h2 className="text-2xl font-bold text-gray-700 mb-5 mt-4">Support and Solutions for Major Appliance Manufacturers</h2>
             <ul className="space-y-2">
               { brands.map(({shortName, id, brandName}: any) => (
-                <li key={id} className="group border p-4 rounded-lg shadow bg-[#4e4e47] hover:bg-yellow-50 hover:text-gray-700 transition-colors">
-                  <Link href={`/err/${shortName.toLowerCase()}`} className="text-lg font-semibold text-white group-hover:text-gray-700 hover:underline transition-colors">
+                <li key={id} className="group border p-4 rounded-lg shadow bg-gradient-to-b from-[#EAF8FB] hover:text-gray-700 transition-colors">
+                  <Link href={`/fix/${shortName.toLowerCase()}`} className="text-lg font-semibold group-hover:text-gray-700 hover:underline transition-colors">
                     <span className="">{brandName}</span>
                   </Link>
                 </li>

@@ -4,6 +4,9 @@ export const metadata = {
   title: 'Contact Support – Submit Your Query',
   description: 'Use appliance error fix query form to contact support or ask questions. We will respond quickly!',
   keywords: ['error fixing contact', 'appliance support', 'appliance query form', 'help', 'customer service'],
+  alternates: {
+    canonical: `https://applianceerrorfix.com/appliance-contact`,
+  }
 }
 
 export default function ContactFormPage() {

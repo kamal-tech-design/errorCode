@@ -11,11 +11,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
   
   return (
     <>
-      <div className="items-center mx-auto">
-        <Breadcrumbs />
-        <FilterBar />
-          {/* Main content area */}
-          <main>{children}</main>
+      <div className="items-center mx-auto min-h-screen w-full max-w-7xl p-4">
+        {/* Main content area */}
+        <div className="mt-4 bg-white mx-auto flex flex-col items-center justify-left">
+          <Breadcrumbs />
+          <FilterBar />
+        </div>
+        <main>{children}</main>
       </div>
     </>
   )

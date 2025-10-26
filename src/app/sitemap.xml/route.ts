@@ -15,7 +15,7 @@ export async function GET() {
  brandList.forEach((brand: string) => {
   applianceslist.forEach((appliance: string) => {
     // Base route for all combinations
-    applianceRoutesList.push(`err/${brand}/${appliance}`)
+    applianceRoutesList.push(`fix/${brand}/${appliance}`)
     // Filter matching slugs
     const matchingSlugs = slugData.filter(({ applianceSlug, brandSlug }: {
       applianceSlug: string;
@@ -40,7 +40,7 @@ export async function GET() {
         slug: string
       }) => {
         if (applianceSlug === appliance && brandSlug?.toLowerCase() === 'lg') {
-          applianceErrorSlugList.push(`err/${brand}/${applianceSlug}/${slug}`)
+          applianceErrorSlugList.push(`fix/${brand}/${applianceSlug}/${slug}`)
         }
       })
     }
@@ -49,7 +49,7 @@ export async function GET() {
 
   const urls = [
     ...staticRoutes,
-    ...brandList.map(brand => `err/${brand}`),
+    ...brandList.map(brand => `fix/${brand}`),
     ...applianceRoutesList,
     ...applianceErrorSlugList
   ]

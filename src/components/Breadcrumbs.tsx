@@ -1,5 +1,4 @@
 'use client'
-
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
@@ -8,14 +7,14 @@ export default function Breadcrumbs() {
   const pathParts = pathname.split('/').filter(Boolean) // removes empty segments
 
   return (
-    <nav className="text-sm text-gray-600 text-xl">
+    <nav className="text-sm text-gray-600 text-xl  w-full max-w-4xl mx-auto">
       { pathParts.length ? (
         <span>
           <Link href="/" className="text-black-300 hover:underline"> Home </Link>
         </span>)
        : null }
       { pathParts.map((part, index) => {
-        const href = '/' + pathParts.slice(0, index + 1).join('/')
+        const href = `/${pathParts.slice(0, index + 1).join('/')}`
 
         return (
           <span key={index}>

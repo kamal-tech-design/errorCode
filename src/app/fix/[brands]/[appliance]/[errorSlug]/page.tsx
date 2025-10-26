@@ -26,7 +26,7 @@ export const generateMetadata = async ({ params }: { params: {
       ...(otherTerms.length ? otherTerms.slice(0, 10) : '') // limit to prevent overly long meta
     ].join(", "),
     alternates: {
-      canonical: `https://applianceerrorfix.com/err/${brands}/${brands}/${errorSlug}`
+      canonical: `https://applianceerrorfix.com/fix/${brands}/${brands}/${errorSlug}`
     }
   }
 }
@@ -40,18 +40,19 @@ export default async function ErrorDetailPage({
     errorSlug: string
   }
 }) {
-  const { errorSlug } = await Promise.resolve(params)
+  const { errorSlug, brands, appliance } = await Promise.resolve(params)
   if (!errorSlug) {
     console.error('Invalid route parameters:', params)
     return <div>Invalid route</div>
   }
   // 👇 getErrorDetails should return data directly, not a Response
   const errorDetails = await getErrorDetails({ errorSlug })
-  console.log('Fetched error details:', errorDetails)
+
   const { errorResolutions, ...details } = 
     (Array.isArray(errorDetails) && errorDetails.length > 0)
       ? errorDetails[0]
       : { errorResolutions: [], details: {} }
+  // console.log('Fetched errorDetails:', errorDetails, 'details:', details, 'errorResolutions:', errorResolutions)
 
   return (
     <div className="p-4 mt-5">
@@ -60,6 +61,8 @@ export default async function ErrorDetailPage({
           errorDetails={errorDetails}
           errorResolutions={errorResolutions}
           details={details}
+          brands={brands}
+          appliance={appliance}
         />
       ) : (
         <div>No error details found!</div>

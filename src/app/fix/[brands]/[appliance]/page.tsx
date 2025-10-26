@@ -1,6 +1,8 @@
 import { Metadata } from 'next'
 import { getApplianceRelatedData } from '@/app/controllers/brand.controller'
 import ErrorListComponent from './ErrorListComponent'
+import { DEFAULT_APPLIANCE } from '@/app/constant'
+import NotFoundPage from '@/app/not-found'
 
 export const generateMetadata = async ({ params }: { params: {
     brands: string
@@ -19,7 +21,7 @@ export const generateMetadata = async ({ params }: { params: {
       appliance
     ].join(", "),
     alternates: {
-      canonical: `https://applianceerrorfix.com/err/${brands}/${appliance}`,
+      canonical: `https://applianceerrorfix.com/fix/${brands}/${appliance}`,
     }
   }
 }
@@ -33,9 +35,11 @@ export default async function ApplianceDetailPage({ params, searchParams }: {
 }) {
   const { brands, appliance } = await Promise.resolve(params)
   const { page } =  await Promise.resolve(searchParams)
-
-  if (!brands || !appliance) {
-    return <div>Invalid route</div>
+  
+  if (!brands || !appliance || DEFAULT_APPLIANCE.indexOf(appliance) === -1) {
+    return <div className="">
+      <NotFoundPage />
+    </div>
   }
 
   const pageNo = parseInt(page || '1', 10)

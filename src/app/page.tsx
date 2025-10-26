@@ -1,16 +1,19 @@
-import HomePage from "../components/BrandsList"
-import { getAllBrand } from "./controllers/brand.controller"
+import HomePage from "../components/Home"
+// import { getAllBrand } from "./controllers/brand.controller"
 
-// export const metadata = {
-//   title: "PalHola - Talk to strangers",
-//   // description: "Welcome to the Digital Store, your one-stop shop for all things digital.",
-//   // keywords: "digital store, online shopping, digital products, e-commerce",
-// }
+export const metadata = {
+  title: "Brand List - Appliance Error Fix",
+  description: "Explore a complete list of major appliance and electronics brands with troubleshooting guides, error codes, repair tips, and maintenance advice.",
+  keywords: "appliance brands, electronics brands, appliance error codes, appliance troubleshooting, appliance repair tips, home appliance brands, kitchen appliance brands, laundry appliance support, electronic device brands, appliance diagnostics",
+  alternates: {
+    canonical: `https://applianceerrorfix.com/fix`,
+  }
+}
 
 export default async function Page() {
-  const brands = await getAllBrand()
-
+  // const brands = await getAllBrand()
+  
   return (
-    <HomePage brands={brands} />
+    <HomePage />
   )
 }

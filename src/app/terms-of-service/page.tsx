@@ -5,8 +5,8 @@ export const metadata = {
   description:
     'Review the Terms and Conditions for using Appliance Error Fix. Understand your rights, responsibilities, and limitations when using our app and services.',
   keywords: [
-    'terms and conditions',
-    'terms of use',
+    'error fix terms and conditions',
+    'error fix terms of use',
     'user agreement',
     'Appliance Error Fix',
     'app terms',
@@ -14,7 +14,10 @@ export const metadata = {
     'disclaimer',
     'user responsibilities',
     'liability'
-  ]
+  ],
+  alternates: {
+    canonical: `https://applianceerrorfix.com/terms-of-service`,
+  }
 }
 
 
