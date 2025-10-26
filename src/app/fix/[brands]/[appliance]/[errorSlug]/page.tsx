@@ -1,6 +1,8 @@
 import { Metadata } from 'next'
 import ErrorDetailComponent from './ErrorDetailComponent'
 import { getErrorDetails } from '@/app/controllers/brand.controller'
+import { DEFAULT_APPLIANCE } from '@/app/constant'
+import NotFoundPage from '@/app/not-found'
 
 export const generateMetadata = async ({ params }: { params: {
     brands: string
@@ -41,18 +43,17 @@ export default async function ErrorDetailPage({
   }
 }) {
   const { errorSlug, brands, appliance } = await Promise.resolve(params)
-  if (!errorSlug) {
-    console.error('Invalid route parameters:', params)
-    return <div>Invalid route</div>
+  if (!errorSlug || DEFAULT_APPLIANCE.indexOf(appliance) === -1) {
+    return <div className="">
+      <NotFoundPage />
+    </div>
   }
-  // 👇 getErrorDetails should return data directly, not a Response
   const errorDetails = await getErrorDetails({ errorSlug })
 
   const { errorResolutions, ...details } = 
     (Array.isArray(errorDetails) && errorDetails.length > 0)
       ? errorDetails[0]
       : { errorResolutions: [], details: {} }
-  // console.log('Fetched errorDetails:', errorDetails, 'details:', details, 'errorResolutions:', errorResolutions)
 
   return (
     <div className="p-4 mt-5">

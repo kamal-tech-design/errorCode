@@ -98,6 +98,7 @@ const FilterBar: React.FC = () => {
           </p>
           <button
             type="submit"
+            name="searchButton"
             className="absolute right-4 px-2 top-1/4 transform -translate-y-1/2 text-gray-500 hover:text-blue-600 cursor-pointer transition-colors"
           >
             <svg

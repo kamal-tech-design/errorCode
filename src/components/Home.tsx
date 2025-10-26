@@ -14,7 +14,7 @@ export default function HomePage() {
     {
       question: "How quickly can this app help fix my appliance?",
       answer:
-        "Most users find the right solution in under 2 minutes! Just enter your appliance brand and error code — or describe the problem in your own words — and the app instantly provides step-by-step repair guidance. It’s faster than waiting for a technician and works 95% of the time.",
+        "Most users find the right solution in under 2 minutes! Just enter your appliance brand and error code — or describe the problem in your own words — and the app instantly provides step-by-step repair guidance. It`s faster than waiting for a technician and works 95% of the time.",
     },
     {
       question: "How much money can I actually save with this app?",
@@ -24,12 +24,12 @@ export default function HomePage() {
     {
       question: "Do I need any tools or repair experience to use it?",
       answer:
-        "Not at all! The app is designed for everyone — even first-time users. You’ll get clear step-by-step instructions, helpful visuals, and easy tips to guide you through every repair safely and confidently.",
+        "Not at all! The app is designed for everyone — even first-time users. You`ll get clear step-by-step instructions, helpful visuals, and easy tips to guide you through every repair safely and confidently.",
     },
     {
-      question: "What if my appliance error code isn’t listed?",
+      question: "What if my appliance error code isn`t listed?",
       answer:
-        "If your specific error code isn’t available, the app will show general troubleshooting steps that fix most problems. You can also submit query form with your code — we'll quickly review and add it so others can benefit too.",
+        "If your specific error code isn`t available, the app will show general troubleshooting steps that fix most problems. You can also submit query form with your code — we'll quickly review and add it so others can benefit too.",
     },
     {
       question: "Does this app work with my appliance brand?",
@@ -46,7 +46,7 @@ export default function HomePage() {
         <div className="flex-1 text-center lg:text-left w-full lg:max-w-[700px]">
           <header>
             <h1 className="text-4xl sm:text-5xl font-extrabold text-[#007EA7] leading-tight mb-2">
-              Technicians Don’t Like This App –
+              Technicians Don`t Like This App –
             </h1>
             <h2 className="text-xl sm:text-4xl text-gray-900 font-extrabold mb-8">
               Smart Homeowners Save More with This Repair Assistant App
@@ -86,16 +86,16 @@ export default function HomePage() {
 
           <div className="space-y-5">
             <div>
-              <h4 className="font-semibold text-[#007EA7] mb-2">1. Quick Search</h4>
+              <h3 className="font-semibold text-[#007EA7] mb-2">1. Quick Search</h3>
               <p className="text-gray-700">
-                Just enter your appliance’s error code — or type what’s going wrong in your own words.
+                Just enter your appliance`s error code — or type what`s going wrong in your own words.
                 The app instantly finds matching issues and shows a list of possible causes.
                 Choose your issue to get the right fix within seconds.
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-[#007EA7] mb-2">2. Step-by-Step Guide</h4>
+              <h3 className="font-semibold text-[#007EA7] mb-2">2. Step-by-Step Guide</h3>
               <ol className="list-decimal list-inside text-gray-700 space-y-2">
                 <li>Select your <strong>appliance brand</strong></li>
                 <li>Choose your <strong>specific appliance</strong> (e.g., washing machine, fridge, etc.)</li>
@@ -106,14 +106,14 @@ export default function HomePage() {
           </div>
 
           <p className="italic text-gray-500 mt-6">
-            It’s fast, accurate, and designed for everyone — even if you’ve never repaired anything before.
+            It`s fast, accurate, and designed for everyone — even if yo`ve never repaired anything before.
           </p>
         </div>
       </section>
       {/* FILTER BAR */}
       <section className="max-w-4xl mx-auto px-6 py-16">
         <h3 className="text-1xl font-semibold text-gray-700 mb-4">In many cases, appliance error codes or issues are similar across different brands.
-          If you don’t find a solution for your specific appliance, try checking the fixes listed under other brands — they often work for the same problem</h3>
+          If you don`t find a solution for your specific appliance, try checking the fixes listed under other brands — they often work for the same problem</h3>
         <FilterBar />
       </section>
 
@@ -125,9 +125,9 @@ export default function HomePage() {
       >
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 id="faq-heading" className="text-3xl font-extrabold text-gray-900">
+            <h3 id="faq-heading" className="text-3xl font-extrabold text-gray-900">
               Quick Answers — Fix It Fast with This App
-            </h2>
+            </h3>
             <p className="mt-3 text-gray-600">
               Get instant answers to common appliance issues and start saving on service calls today.
             </p>
@@ -181,14 +181,14 @@ export default function HomePage() {
         </h2>
         <p className="text-gray-600 mb-10 max-w-2xl mx-auto">
           Over <strong>5,000+</strong> users rely on this app for quick, accurate, and free appliance fixes.
-          We’re proud to make home repairs simple and stress-free.
+          We`re proud to make home repairs simple and stress-free.
         </p>
         <div className="flex flex-wrap justify-center gap-8">
-          <img src="/images/brand-samsung.jpeg" alt="Samsung" className="h-10 opacity-80" />
-          <img src="/images/brand-lg.jpeg" alt="LG" className="h-10 opacity-80" />
-          <img src="/images/brand-whirepool.jpeg" alt="Whirlpool" className="h-10 opacity-80" />
-          <img src="/images/brand-voltas.jpeg" alt="Voltas" className="h-10 opacity-80" />
-          <img src="/images/brand-haier.jpeg" alt="Haier" className="h-10 opacity-80" />
+          <img src="/images/brand-samsung.jpeg" style={{"width" : "135px" }} alt="Samsung" className="h-12 opacity-80" />
+          <img src="/images/brand-lg.jpeg" alt="LG" style={{"width" : "135px" }} className="h-12 opacity-80" />
+          <img src="/images/brand-whirepool.jpeg" style={{"width" : "135px" }} alt="Whirlpool" className="h-12 opacity-80" />
+          <img src="/images/brand-voltas.jpeg" style={{"width" : "135px" }} alt="Voltas" className="h-12 opacity-80" />
+          <img src="/images/brand-haier.jpeg" style={{"width" : "135px" }} alt="Haier" className="h-12 opacity-80" />
         </div>
       </div>
     </section>
