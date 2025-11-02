@@ -1,7 +1,9 @@
 "use client"
-
 import { useState } from "react"
+import Link from "next/link"
 import FilterBar from "./FilterBar"
+import { RocketLaunchIcon } from "@heroicons/react/24/outline"
+import ContactToTech from "./ContactToTech"
 
 export default function HomePage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
@@ -12,7 +14,7 @@ export default function HomePage() {
 
   const faqData = [
     {
-      question: "How quickly can this app help fix my appliance?",
+      question: "How quickly can this app help fix my appliance or reset an appliance?",
       answer:
         "Most users find the right solution in under 2 minutes! Just enter your appliance brand and error code — or describe the problem in your own words — and the app instantly provides step-by-step repair guidance. It`s faster than waiting for a technician and works 95% of the time.",
     },
@@ -37,24 +39,33 @@ export default function HomePage() {
         "Yes! The app supports over 10+ major appliance brands, including Samsung, LG, Whirlpool, Haier, Voltas and few others. In fact, 95% of users successfully fix their appliance on the first try using our repair guides.",
     },
   ]
-
+  
   return (
     <main className="bg-gradient-to-b from-[#EAF8FB] to-white py-10">
+
       {/* HERO SECTION */}
       <article className="max-w-8xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-start gap-12">
         {/* LEFT CONTENT */}
         <div className="flex-1 text-center lg:text-left w-full lg:max-w-[700px]">
           <header>
             <h1 className="text-4xl sm:text-5xl font-extrabold text-[#007EA7] leading-tight mb-2">
-              Technicians Don`t Like This App –
+              Fix Home Appliances Instantly Using Error Codes
             </h1>
-            <h2 className="text-xl sm:text-4xl text-gray-900 font-extrabold mb-8">
-              Smart Homeowners Save More with This Repair Assistant App
+            <h2 className="text-xl sm:text-3xl text-gray-900 font-extrabold mb-8">
+              Get Instant Solutions & Save More with the Appliance Error Fix App
             </h2>
           </header>
 
           <p className="text-gray-700 text-base sm:text-lg mb-8">
-            Join thousands who discovered an easier way to fix appliances. This app shows you how to repair common problems fast—no tools, no costly service calls, no stress. Get started today and take control of your home repairs!
+            Discover an easier, smarter way to handle <strong>home appliance repairs</strong>.  
+            Simply enter your appliance’s <strong>error code</strong> or describe the issue,  
+            and get <strong>instant repair solutions</strong> — without tools, stress, or expensive service calls.
+          </p>
+
+          <p className="text-gray-700 text-base sm:text-lg">
+            Whether it’s a <strong>washing machine</strong>, <strong>refrigerator</strong>, <strong>microwave</strong>, or <strong>oven</strong>,  
+            this app helps you <strong>diagnose and fix appliance errors fast</strong>.  
+            Save time, save money, and keep your home running smoothly.
           </p>
         </div>
 
@@ -63,57 +74,66 @@ export default function HomePage() {
           <div className="bg-white rounded-2xl shadow-lg p-4 w-full max-w-md">
             <img
               src="/images/homepage-washing-repair.jpg"
-              alt="Homeowner using repair assistant app to fix a washing machine"
+              alt="Homeowner using app for instant appliance repair based on error codes"
               className="rounded-xl w-full h-auto"
               loading="lazy"
             />
           </div>
           <div className="mt-4 bg-[#101828] text-white font-medium text-sm px-6 py-2 rounded-full shadow-sm">
-            🔧 5,000+ homeowners helped | 10+ brands
+            🔧 5,000+ Homeowners Helped | Supports 10+ Appliance Brands
           </div>
         </aside>
       </article>
+
       {/* HOW IT WORKS */}
       <section className="flex-1 max-w-8xl mx-auto px-6 lg:px-8 flex flex-col items-start gap-2" aria-labelledby="how-it-works">
-        <h2 id="how-it-works" className="text-2xl font-semibold text-gray-700 mb-4">
-          How It Works — Two Easy Ways to Find Your Fix
+        <h2 id="how-it-works" className="text-2xl font-semibold text-gray-700 mb-4 mt-4">
+          How the Appliance Error Fix App Works — Two Easy Ways to Find Your Solution
         </h2>
 
         <div className="bg-white rounded-2xl shadow-md p-6 w-half">
           <p className="text-gray-700 mb-4">
-            There are two simple ways to use this app to get your repair solution:
+            Our app makes <strong>home appliance repair</strong> quick and simple.  
+            You can find the right solution in minutes using one of these two options:
           </p>
 
           <div className="space-y-5">
             <div>
-              <h3 className="font-semibold text-[#007EA7] mb-2">1. Quick Search</h3>
+              <h3 className="font-semibold text-[#007EA7] mb-2">1. Quick Error Code Search</h3>
               <p className="text-gray-700">
-                Just enter your appliance`s error code — or type what`s going wrong in your own words.
-                The app instantly finds matching issues and shows a list of possible causes.
-                Choose your issue to get the right fix within seconds.
+                Enter your appliance’s <strong>error code</strong> or describe the issue.  
+                The app instantly identifies common causes and gives you step-by-step instructions to fix it.  
+                Perfect for DIY home appliance troubleshooting.
               </p>
             </div>
 
             <div>
-              <h3 className="font-semibold text-[#007EA7] mb-2">2. Step-by-Step Guide</h3>
+              <h3 className="font-semibold text-[#007EA7] mb-2">2. Guided Step-by-Step Repair</h3>
               <ol className="list-decimal list-inside text-gray-700 space-y-2">
-                <li>Select your <strong>appliance brand</strong></li>
-                <li>Choose your <strong>specific appliance</strong> (e.g., washing machine, fridge, etc.)</li>
-                <li>Find your <strong>related error code</strong></li>
-                <li>Click to view <strong>detailed repair instructions</strong> with clear steps and visuals</li>
+                <li>Select your <strong>appliance brand</strong> (e.g., Samsung, LG, Whirlpool)</li>
+                <li>Choose your <strong>appliance type</strong> — washer, fridge, microwave, etc.</li>
+                <li>Find your <strong>error code</strong> or symptom</li>
+                <li>Follow our <strong>detailed repair guide</strong> with visuals and safety tips</li>
               </ol>
             </div>
           </div>
 
           <p className="italic text-gray-500 mt-6">
-            It`s fast, accurate, and designed for everyone — even if yo`ve never repaired anything before.
+            It’s fast, reliable, and built for everyone — even if you’ve never fixed anything before.
           </p>
         </div>
       </section>
+
       {/* FILTER BAR */}
       <section className="max-w-4xl mx-auto px-6 py-16">
-        <h3 className="text-1xl font-semibold text-gray-700 mb-4">In many cases, appliance error codes or issues are similar across different brands.
-          If you don`t find a solution for your specific appliance, try checking the fixes listed under other brands — they often work for the same problem</h3>
+        <h2 className="text-2xl font-semibold text-gray-700 mb-4">
+          Compatible with Multiple Appliance Brands & Error Codes
+        </h2>
+        <p className="text-gray-700 mb-6">
+          Many <strong>appliance error codes</strong> are similar across brands.  
+          If you don’t find a direct match for your appliance, try viewing solutions from other models —  
+          they often resolve the same issues effectively.
+        </p>
         <FilterBar />
       </section>
 
@@ -125,73 +145,78 @@ export default function HomePage() {
       >
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-12">
-            <h3 id="faq-heading" className="text-3xl font-extrabold text-gray-900">
-              Quick Answers — Fix It Fast with This App
-            </h3>
+            <h2 id="faq-heading" className="text-3xl font-extrabold text-gray-900">
+              Appliance Repair FAQs — Fix It Fast with Error Code Solutions
+            </h2>
             <p className="mt-3 text-gray-600">
-              Get instant answers to common appliance issues and start saving on service calls today.
+              Common questions about <strong>home appliance repair</strong> and how our app helps you fix them instantly.
             </p>
           </div>
 
-          <div className="space-y-4">
-            { faqData.map((faq, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl shadow-md overflow-hidden transition-all"
-              >
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="w-full flex justify-between items-center px-6 py-5 text-left focus:outline-none hover:bg-gray-50"
-                  aria-expanded={openIndex === index}
-                  aria-controls={`faq-answer-${index}`}
-                >
-                  <h3 className="text-lg font-medium text-gray-900">{faq.question}</h3>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className={`h-5 w-5 text-gray-500 transform transition-transform duration-300 ${
-                      openIndex === index ? "rotate-180" : ""
-                    }`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path d="m6 9 6 6 6-6" />
-                  </svg>
-                </button>
-
-                {openIndex === index && (
+              <div className="space-y-4">
+                { faqData.map((faq, index) => (
                   <div
-                    id={`faq-answer-${index}`}
-                    className="px-6 pb-5 border-t border-gray-200"
+                    key={index}
+                    className="bg-white rounded-xl shadow-md overflow-hidden transition-all"
                   >
-                    <p className="text-gray-700 mt-3">{faq.answer}</p>
+                    <button
+                      onClick={() => toggleFAQ(index)}
+                      className="w-full flex justify-between items-center px-6 py-5 text-left focus:outline-none hover:bg-gray-50"
+                      aria-expanded={openIndex === index}
+                      aria-controls={`faq-answer-${index}`}
+                    >
+                      <h3 className="text-lg font-medium text-gray-900">{faq.question}</h3>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className={`h-5 w-5 text-gray-500 transform transition-transform duration-300 ${
+                          openIndex === index ? "rotate-180" : ""
+                        }`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path d="m6 9 6 6 6-6" />
+                      </svg>
+                    </button>
+
+                    {openIndex === index && (
+                      <div
+                        id={`faq-answer-${index}`}
+                        className="px-6 pb-5 border-t border-gray-200"
+                      >
+                        <p className="text-gray-700 mt-3">{faq.answer}</p>
+                      </div>
+                    )}
                   </div>
-                )}
+                ))}
               </div>
-            ))}
+        </div>
+      </section>
+      
+      {/* When to Contact a Technician Section */}
+      <section className="max-w-4xl mx-auto">
+        <ContactToTech />
+      </section>
+      {/* TRUST SECTION */}
+      <section className="bg-white py-5 border-t border-gray-100">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-6">
+            Trusted by Thousands of Homeowners
+          </h2>
+          <p className="text-gray-600 mb-10 max-w-2xl mx-auto">
+            Over <strong>5,000+</strong> users rely on <strong>Appliance Error Fix</strong> for fast, accurate, and affordable  
+            <strong>appliance error code repair solutions</strong>. Take control of your home repairs today.
+          </p>
+          <div className="flex flex-wrap justify-center gap-8">
+            <Link href="fix/samsung"><img src="/images/brand-samsung.jpeg" alt="Samsung appliance repair" style={{ width: "135px" }} className="h-12 opacity-80" /></Link>
+            <Link href="fix/lg"><img src="/images/brand-lg.jpeg" alt="LG appliance repair" style={{ width: "135px" }} className="h-12 opacity-80" /></Link>
+            <Link href="fix/whirlpool"><img src="/images/brand-whirepool.jpeg" alt="Whirlpool appliance repair" style={{ width: "135px" }} className="h-12 opacity-80" /></Link>
+            <Link href="fix/voltas"><img src="/images/brand-voltas.jpeg" alt="Voltas appliance repair" style={{ width: "135px" }} className="h-12 opacity-80" /></Link>
+            <Link href="fix/haier"><img src="/images/brand-haier.jpeg" alt="Haier appliance repair" style={{ width: "135px" }} className="h-12 opacity-80" /></Link>
           </div>
         </div>
       </section>
-      {/* TRUST SECTION */}
-    <section className="bg-white py-5 border-t border-gray-100">
-      <div className="max-w-6xl mx-auto px-6 text-center">
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-6">
-          Trusted by Thousands of Homeowners
-        </h2>
-        <p className="text-gray-600 mb-10 max-w-2xl mx-auto">
-          Over <strong>5,000+</strong> users rely on this app for quick, accurate, and free appliance fixes.
-          We`re proud to make home repairs simple and stress-free.
-        </p>
-        <div className="flex flex-wrap justify-center gap-8">
-          <img src="/images/brand-samsung.jpeg" style={{"width" : "135px" }} alt="Samsung" className="h-12 opacity-80" />
-          <img src="/images/brand-lg.jpeg" alt="LG" style={{"width" : "135px" }} className="h-12 opacity-80" />
-          <img src="/images/brand-whirepool.jpeg" style={{"width" : "135px" }} alt="Whirlpool" className="h-12 opacity-80" />
-          <img src="/images/brand-voltas.jpeg" style={{"width" : "135px" }} alt="Voltas" className="h-12 opacity-80" />
-          <img src="/images/brand-haier.jpeg" style={{"width" : "135px" }} alt="Haier" className="h-12 opacity-80" />
-        </div>
-      </div>
-    </section>
 
     </main>
   )

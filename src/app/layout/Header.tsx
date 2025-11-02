@@ -45,6 +45,9 @@ function Header() {
               <Link href="/fix" className="hover:underline">Brands</Link>
             </li>
             <li>
+              <Link href="/common-error-code" className="hover:underline">Common Error Codes</Link>
+            </li>
+            <li>
               <Link href="/query-form" className="hover:underline">Put Your Query</Link>
             </li>
             {/* Language Dropdown */}

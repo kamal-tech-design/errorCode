@@ -1,5 +1,6 @@
 import QueryPage from '@/app/query-form/page'
-import { CheckCircleIcon, QuestionMarkCircleIcon, LightBulbIcon, Cog6ToothIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline'
+import ContactToTech from '@/components/ContactToTech'
+import { CheckCircleIcon, QuestionMarkCircleIcon, LightBulbIcon, Cog6ToothIcon, ExclamationTriangleIcon, RocketLaunchIcon } from '@heroicons/react/24/outline'
 
 interface ErrorResolution {
   resolutionid: number
@@ -178,7 +179,10 @@ export default function ErrorDetailComponent({
             )}
           </dl>
 
-          <div className="group mt-4">
+          {/* When to Contact a Technician Section */}
+          <ContactToTech />
+
+          <div className="group mt-1">
             <QueryPage errorId={details?.errorId} />
           </div>
         </section>

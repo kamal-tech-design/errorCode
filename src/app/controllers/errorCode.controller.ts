@@ -64,3 +64,22 @@ export async function getErrorList(queryValue: string) {
     return ({ message: 'Failed to fetch errors', error, status: 500 })
   }
 }
+
+export async function getErrorCodeInfo(commonFixes: string) {
+  // commonFixes paramater is slug
+  console.log("Common Fixes Slug:", commonFixes);
+  try {
+    const data = await prisma.errorcode.findMany({
+      include: {
+        errorResolutions: true
+      },
+      where: {
+        slug: commonFixes
+      }
+    })
+    
+    return data
+  } catch (error) {
+    return { message: 'Failed to fetch error details', errorDetails: error, status: 500 }
+  }
+}
