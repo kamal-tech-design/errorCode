@@ -1,11 +1,10 @@
 import CommonErrorCodes from './ErrorCode'
 
 export const metadata = {
-  title: 'Appliance error fix Query form – Submit Your Query',
-  description: 'Use our query form to contact support or ask questions. We will respond quickly!',
-  keywords: ['error fix contact', 'support', 'query form', 'help', 'customer service'],
+  title: 'Common Appliance Error Code List – Identify & Fix Your Appliance Issues',
+  description: 'Explore our complete guide to the most common washer, dryer, refrigerator, and dishwasher error codes. Learn what each code means and how to fix it easily.',
   alternates: {
-    canonical: `https://applianceerrorfix.com/query-form`,
+    canonical: 'https://applianceerrorfix.com/common-error-code',
   }
 }
 

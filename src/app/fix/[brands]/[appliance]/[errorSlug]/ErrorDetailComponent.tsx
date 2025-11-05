@@ -79,7 +79,7 @@ export default function ErrorDetailComponent({
   )
   const errorCd = details && details?.erCode ? 
     (details.erCode?.split('-') ? details.erCode?.split('-')[1]: details.erCode) : 'N/A'
-  console.log(details, '===details')
+  // console.log(details, '===details')
   const title = details?.title || ''
 
   return (

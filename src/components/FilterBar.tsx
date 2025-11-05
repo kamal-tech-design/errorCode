@@ -56,7 +56,7 @@ const FilterBar: React.FC = () => {
 
   const handleClose = () => {
     setIsDisplay(false)
-    console.log('Close button clicked, hiding search results')
+    // console.log('Close button clicked, hiding search results')
   }
 
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {

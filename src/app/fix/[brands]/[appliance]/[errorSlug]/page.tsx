@@ -12,14 +12,14 @@ export const generateMetadata = async ({ params }: { params: {
   const { brands, errorSlug, appliance } = await Promise.resolve(params)
   const errorDetails = await getErrorDetails({ errorSlug })
 
-  const { title, description, otherTerm } = 
+  const { title, description, otherTerm, erCode } = 
     (Array.isArray(errorDetails) && errorDetails.length > 0)
       ? errorDetails[0]
       : { title: 'Appliance error code', description: 'Appliance error code | bug fixing', otherTerm: [] }
   const otherTerms = otherTerm ? JSON.parse(JSON.stringify(otherTerm)) : []
 
   return {
-    title: `${title} - ${brands} | ${appliance} - Error Code | Appliance Error Fix`,
+    title: `${title} - ${brands} | ${appliance} Error Repair | Appliance Error Code Fix`,
     description: description || `Troubleshoot ${brands} | ${appliance} issues like ${title}. Get solutions, fixes, and error code explanations.`,
     keywords: [
       brands,
@@ -28,7 +28,7 @@ export const generateMetadata = async ({ params }: { params: {
       ...(otherTerms.length ? otherTerms.slice(0, 10) : '') // limit to prevent overly long meta
     ].join(", "),
     alternates: {
-      canonical: `https://applianceerrorfix.com/fix/${brands}/${brands}/${errorSlug}`
+      canonical: `https://applianceerrorfix.com/fix/${brands}/${appliance}/${errorSlug}`
     }
   }
 }

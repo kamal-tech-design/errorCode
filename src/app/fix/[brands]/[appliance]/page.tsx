@@ -11,8 +11,8 @@ export const generateMetadata = async ({ params }: { params: {
   const { brands, appliance } = await Promise.resolve(params)
 
   return {
-    title: `${brands} | ${appliance} Error Code | Appliance Error Fix`,
-    description: `Troubleshoot ${brands} | ${appliance} issues like. Get solutions, fixes, and error code explanations.`,
+    title: `${brands} - ${appliance} Error Code List | Appliance Error Fix`,
+    description: `Troubleshoot ${brands} | ${appliance} issues like Get solutions, fixes, and error code explanations.`,
     keywords: [
       `${brands} | ${appliance} appliance error codes`,
       `${brands} | ${appliance} error code troubleshooting`,

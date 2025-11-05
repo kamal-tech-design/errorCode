@@ -5,11 +5,10 @@ import { getErrorCodeInfo } from "../controllers/errorCode.controller"
 export const generateMetadata = async (): Promise<Metadata> => {
   
   return {
-    title: "Brand List - Appliance Error Fix",
-    description: "Explore a complete list of major appliance and electronics brands with troubleshooting guides, error codes, repair tips, and maintenance advice.",
-    keywords: "appliance brands, electronics brands, appliance error codes, appliance troubleshooting, appliance repair tips, home appliance brands, kitchen appliance brands, laundry appliance support, electronic device brands, appliance diagnostics",
+    title: 'How to Reset Common Home Appliances – Step-by-Step Troubleshooting Guide - Appliance Error Repair',
+    description: 'Learn how to safely reset your washer, dryer, refrigerator, dishwasher, and oven with our detailed step-by-step instructions. Restore your appliance performance and clear error codes easily.',
     alternates: {
-      canonical: `https://applianceerrorfix.com/fix`,
+      canonical: 'https://applianceerrorfix.com/how-to-reset-common-home-appliances',
     }
   }
 }
