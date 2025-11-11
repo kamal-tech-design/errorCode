@@ -1,13 +1,11 @@
 'use client'
 import Link from 'next/link'
 import { useState } from 'react'
-import { usePathname } from 'next/navigation'
 import useSaveVisitorInfo from '../hooks'
 
 function Header() {
-  const pathname = usePathname()  // e.g. "/products"
   const [language, setLanguage] = useState('en')
-  useSaveVisitorInfo({ pathname, setLanguage })
+  useSaveVisitorInfo()  // Initialize the hook to set language based on localStorage
   // ...existing code...
   const handleLanguageChange = (e: any) => {
     const selectedLang = e.target.value

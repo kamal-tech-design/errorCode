@@ -88,6 +88,8 @@ model visitorlogs {
   ipAddress     String   @db.VarChar(100)
   referer       String   @db.Text
   userAgent     String   @db.Text
+  likes         Int
+  unLikes       Int
   createdAt     DateTime @default(now()) @db.DateTime(0)
 }
 

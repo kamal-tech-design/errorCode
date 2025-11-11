@@ -4,11 +4,11 @@ import { getErrorSlug } from '@/app/controllers/errorCode.controller'
 export async function GET() {
   const baseUrl = 'https://applianceerrorfix.com'
   const brandList = ["lg", "samsung", "voltas", "blue-star", "godrej", "daikin", "panasonic", "whirlpool", "mitsubishi", "midea", "haier" ]
-  const applianceslist = ["refrigerator", "air-conditioners", "washing-machine", "dishwasher", "smart-tv", "ovens-microwaves"]
+  const applianceslist = ["refrigerator", "air-conditioner", "washing-machine", "dishwasher", "smart-tv", "ovens-microwaves"]
   // Example: Fetch dynamic slugs from your database
   // Replace this with your actual Prisma query
   const slugData: any = await getErrorSlug() ?? [] 
-  const staticRoutes = ['', 'appliance-contact', 'query-form', 'privacy-policy', 'terms-of-service', 'err']
+  const staticRoutes = ['', 'appliance-contact', 'query-form', 'privacy-policy', 'terms-of-service', 'fix']
   const applianceRoutesList: string[] = []
   const applianceErrorSlugList: string[] = []
  

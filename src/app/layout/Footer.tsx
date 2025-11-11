@@ -1,8 +1,10 @@
 import Link from "next/link"
+import FeedbackModal from "../../components/FeedbackModal"
 
 function Footer() {
   return (
     <footer className="bg-gray-900 text-white py-8 mt-8">
+      <FeedbackModal />
       <div className="max-w-5xl container mx-auto px-4 flex flex-row text-center gap-6 mb-5 justify-between">   
           {/* Logo & Tagline Section */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left gap-3 max-w-sm">
@@ -56,7 +58,7 @@ function Footer() {
           &copy; 2025 All rights reserved.
         </p>
     </footer>
-  );
+  )
 }
 
-export default Footer;
+export default Footer

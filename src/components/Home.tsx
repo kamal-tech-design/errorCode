@@ -205,8 +205,8 @@ export default function HomePage() {
             Trusted by Thousands of Homeowners
           </h2>
           <p className="text-gray-600 mb-10 max-w-2xl mx-auto">
-            Over <strong>5,000+</strong> users rely on <strong>Appliance Error Fix</strong> for fast, accurate, and affordable  
-            <strong>appliance error code repair solutions</strong>. Take control of your home repairs today.
+            Over <strong>5,000+</strong> users rely on <strong> Appliance Error Fix</strong> for fast, accurate, and affordable 
+            <strong> appliance error code repair solutions</strong>. Take control of your home repairs today.
           </p>
           <div className="flex flex-wrap justify-center gap-8">
             <Link href="fix/samsung"><img src="/images/brand-samsung.jpeg" alt="Samsung appliance repair" style={{ width: "135px" }} className="h-12 opacity-80" /></Link>
